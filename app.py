@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 import base64
 import numpy as np
@@ -59,6 +60,7 @@ def process_images_in_b64(b64_string):
     return probability[1]
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/submit', methods=['POST'])
 def submit():
